@@ -12,12 +12,20 @@
     
     
     <item>
-      <title>Note | demo note.</title>
-      <link>https://tesla-xiao.github.io/post/my_note_1/</link>
+      <title>Create my blog.</title>
+      <link>https://tesla-xiao.github.io/post/build_blog/</link>
       <pubDate>Sun, 29 Mar 2020 17:07:05 +0800</pubDate>
       
-      <guid>https://tesla-xiao.github.io/post/my_note_1/</guid>
-      <description></description>
+      <guid>https://tesla-xiao.github.io/post/build_blog/</guid>
+      <description>今天建立了blog，以下是对该过程的一个回顾与总结。
+1 Git以及Hugo安装及配置 这一块在网上有很多教程，也没遇到什么难点，在此略过。
+2 使用Hugo建立本地Blog 这一块主要参考Oh oh的博客进行建立，具体过程如下：
+2.1 创建站点 首先创建站点：
+# cd d:blog hogo new site yourblogname # Where &#39;yourblogname&#39; is your blog name. 创建完成后，文件树如下：
+├─archetypes ├─content ├─data ├─layouts ├─static ├─themes └─config.toml 2.2 下载一个主题 在Hugo主题商店挑选一款自己喜欢的主题直接clone下来就行。
+cd themes git clone https://github.com/ertuil/erblog.git themes文件夹用处存放各式主题，可以多下载几个尝试一下不同风格。
+2.3 配置config.toml 这里我参考了两份官方文档，分别关于Configure与Taxonomies。 我的配置文件如下：
+baseURL = &amp;quot;https://tesla-xiao.github.io/&amp;quot; # It seems ok without it. title = &amp;quot;Tesla&#39;s blog&amp;quot; theme = &amp;quot;erblog&amp;quot; paginate = 8 languageCode = &amp;quot;zh-CN&amp;quot; DefaultContentLanguage = &amp;quot;en&amp;quot; enableInlineShortcodes = true footnoteReturnLinkContents = &amp;quot;^&amp;quot; [params] author = &amp;quot;Tesla&amp;quot; bio = &amp;quot;&amp;quot;&amp;quot; &amp;lt;p&amp;gt; Xiao Zhang is a Ph.</description>
     </item>
     
   </channel>

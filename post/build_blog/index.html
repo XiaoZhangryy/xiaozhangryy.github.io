@@ -1,0 +1,310 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tesla&#39;s blog - Create my blog. </title>
+
+    
+    
+    <meta content="Hugo, SKills" name="keywords">
+    
+    <meta content="Tesla&#39;s blog - 今天建立了blog，以下是对该过程的一个回顾与总结。
+1 Git以及Hugo安装及配置 这一块在网上有很多教程，也没遇到什么难点，在此略过。
+2 使用Hugo建立本地Blog 这一块主要参考Oh oh的博客进行建立，具体过程如下：
+2.1 创建站点 首先创建站点：
+# cd d:blog hogo new site yourblogname # Where &#39;yourblogname&#39; is your blog name. 创建完成后，文件树如下：
+├─archetypes ├─content ├─data ├─layouts ├─static ├─themes └─config.toml 2.2 下载一个主题 在Hugo主题商店挑选一款自己喜欢的主题直接clone下来就行。
+cd themes git clone https://github.com/ertuil/erblog.git themes文件夹用处存放各式主题，可以多下载几个尝试一下不同风格。
+2.3 配置config.toml 这里我参考了两份官方文档，分别关于Configure与Taxonomies。 我的配置文件如下：
+baseURL = &quot;https://tesla-xiao.github.io/&quot; # It seems ok without it. title = &quot;Tesla&#39;s blog&quot; theme = &quot;erblog&quot; paginate = 8 languageCode = &quot;zh-CN&quot; DefaultContentLanguage = &quot;en&quot; enableInlineShortcodes = true footnoteReturnLinkContents = &quot;^&quot; [params] author = &quot;Tesla&quot; bio = &quot;&quot;&quot; &lt;p&gt; Xiao Zhang is a Ph." name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+
+    
+
+    
+
+    
+    
+    <script type="text/javascript" async
+        src="/mathjax-3.0.0/tex-mml-chtml.js">
+    </script>
+    
+
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel="stylesheet" href="/self/css/default.css">
+    <script src="/layui/layui.js"></script>
+
+
+    <link rel="stylesheet" async href="/self/css/markdown.min.css">
+    <link rel="stylesheet" async href="/self/css/gallery.css">
+    <link rel="stylesheet" async href="/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="/self/js/lazysizes.min.js" async></script>
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+</head>
+
+<body>
+    
+    <header class="layui-header layui-bg-cyan">
+
+    
+    
+    <a class="nav-self-logo" href="/">
+        Tesla&#39;s blog
+    </a>
+
+    <ul class="layui-nav layui-layout-right layui-bg-cyan" lay-filter="">
+        
+        
+        <li class="layui-nav-item" id="nav_big"><a href="/post/">Posts</a></li>
+        
+
+        
+            
+                <li class="layui-nav-item" id="nav_big"><a href="/zone/">Zone</a></li>
+            
+        
+
+        
+        <li class="layui-nav-item" id="nav_small">
+            <a href="javascript:;">
+                <i class="layui-icon layui-icon-app" style="font-size: 24px;"></i>
+            </a>
+
+            <dl class="layui-nav-child">
+                
+                <dd><a href="/post/">Posts</a></dd>
+                
+
+                
+                    
+                        <dd><a href="/zone/">Zone</a></dd>
+                    
+                
+            </dl>
+        </li>
+    </ul>
+</header>
+
+<script>
+layui.use('element', function(){
+  var element = layui.element;
+});
+</script>
+        <div id="content" style="min-height:80%">
+<div class="layui-container" style="margin-bottom: 10px">
+    
+
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-md12 layui-col-sm12 layui-col-xs12">
+            <div class="layui-card single-card">
+                <br />
+                <blockquote class="layui-elem-quote markdown-body single-title" >
+                    <h1>Create my blog.</h1>
+                    <h3 style="margin-top:10px; margin-bottom:10px"> 
+    <i class="layui-icon layui-icon-date" style="font-size: 24px; vertical-align: -2px;"></i>
+    <span>2020-03-29</span>
+
+    
+    <i class="layui-icon layui-icon-tabs" style="font-size: 22px; vertical-align: 0px;"></i>
+    
+        <a href="/tags/hugo">
+            <span class="layui-badge" style="vertical-align: 2px;">Hugo</span>
+        </a>
+    
+</h3>
+                </blockquote>
+                <div class="layui-card-body markdown-body single-content">
+                    <p>今天建立了blog，以下是对该过程的一个回顾与总结。</p>
+<h1 id="1-git以及hugo安装及配置">1 Git以及Hugo安装及配置</h1>
+<p>这一块在网上有很多教程，也没遇到什么难点，在此略过。</p>
+<h1 id="2-使用hugo建立本地blog">2 使用Hugo建立本地Blog</h1>
+<p>这一块主要参考<a href="https://blog.csdn.net/lq1832656473/article/details/90749045">Oh oh</a>的博客进行建立，具体过程如下：</p>
+<h2 id="21-创建站点">2.1 创建站点</h2>
+<p>首先创建站点：</p>
+<pre><code># cd d:blog
+hogo new site yourblogname
+# Where 'yourblogname' is your blog name.
+</code></pre><p>创建完成后，文件树如下：</p>
+<pre><code>├─archetypes
+├─content
+├─data
+├─layouts
+├─static
+├─themes
+└─config.toml
+</code></pre><h2 id="22-下载一个主题">2.2 下载一个主题</h2>
+<p>在<a href="https://themes.gohugo.io/">Hugo主题商店</a>挑选一款自己喜欢的主题直接clone下来就行。</p>
+<pre><code>cd themes
+git clone https://github.com/ertuil/erblog.git
+</code></pre><p>themes文件夹用处存放各式主题，可以多下载几个尝试一下不同风格。</p>
+<h2 id="23-配置configtoml">2.3 配置config.toml</h2>
+<p>这里我参考了两份官方文档，分别关于<a href="https://gohugo.io/getting-started/configuration">Configure</a>与<a href="https://gohugo.io/content-management/taxonomies/">Taxonomies</a>。
+我的配置文件如下：</p>
+<pre><code>baseURL = &quot;https://tesla-xiao.github.io/&quot; # It seems ok without it.
+title = &quot;Tesla's blog&quot;
+theme = &quot;erblog&quot;
+paginate = 8
+languageCode = &quot;zh-CN&quot;
+DefaultContentLanguage = &quot;en&quot;
+enableInlineShortcodes = true
+footnoteReturnLinkContents = &quot;^&quot;
+
+[params]
+    author = &quot;Tesla&quot;
+    bio = &quot;&quot;&quot;
+    &lt;p&gt; Xiao Zhang is a Ph.D. candidate in the school of Statistics and 
+        Management of SUFE. He majors in Applied Statistics, and his research 
+        interests includes high dimensional statistics. &lt;/p&gt;
+    &quot;&quot;&quot;
+    copyright = &quot;Copyright © 2020. All rights reserved.&quot;
+    description = &quot;Student in SUFE&quot;
+
+# ------------------------------------------------------------------------------
+
+[[menu.main]]
+    identifier = &quot;zone&quot;
+    name = &quot;Zone&quot;
+    url = &quot;/zone/&quot;
+    weight = 2
+
+# ------------------------------------------------------------------------------
+
+[[menu.footer]]
+    identifier = &quot;Xu Liu's blog&quot;
+    name = &quot;Xu Liu's blog&quot;
+    url = &quot;https://xliusufe.gitee.io/post/hugomac/&quot;
+    weight = 1
+    # My mentor's blog.
+
+# ------------------------------------------------------------------------------
+
+[taxonomies]
+category = &quot;categories&quot;
+tag = &quot;tags&quot;
+series = &quot;series&quot;
+
+# ------------------------------------------------------------------------------
+
+[[menu.icon]]
+    url = &quot;mailto:zhangxiao_0422@163.com&quot;
+    name = &quot;envelope-o&quot;
+    weight = 1
+
+[[menu.icon]]
+    url = &quot;https://github.com/Tesla-Xiao&quot;
+    name = &quot;github&quot;
+    weight = 2
+
+</code></pre><h2 id="24-创建一篇博客文章">2.4 创建一篇博客文章</h2>
+<p>博客的内容都存放在content文件夹下，我们可进一步划分文件夹post与zone来对应我们在博客上设置的板块。</p>
+<p>首先创建文章文件<code>hugo new post/build_blog.md</code>。
+然后可在md文件中进一步添加标签属性，如：</p>
+<pre><code>title: &quot;Create my blog.&quot;
+date: 2020-03-29T17:07:05+08:00
+draft: false
+tags: [&quot;Hugo&quot;]
+# series: [&quot;Some serious&quot;]
+categories: [&quot;SKills&quot;]
+</code></pre><h2 id="25-本地调试">2.5 本地调试</h2>
+<p>回到根目录，使用 	<code>hugo server</code> 命令调试预览。</p>
+<pre><code>cd ..
+hugo server -t erblog --buildDrafts
+</code></pre><p>其中 <code>-t erblog</code> 是指定主题为erblog，<code>--buildDrafts</code> 为编译草稿文件。</p>
+<h2 id="26-生成最终页面">2.6 生成最终页面</h2>
+<pre><code>cd ..
+hugo -t erblog --buildDrafts
+</code></pre><p>该过程会生成一个public文件夹，该文件夹的内容即Hugo生成的整个静态网站。</p>
+<h1 id="3-部署到github及gitee">3 部署到Github及Gitee</h1>
+<h2 id="31-关联本地库与github及gitee">3.1 关联本地库与Github及Gitee</h2>
+<p>由于我之前已经关联过了本地库与Github，所以只需关联本地库与Gitee即可。
+关联本地库与Gitee，参考的是<a href="https://www.liaoxuefeng.com/wiki/896043488029600/1163625339727712">廖雪峰的教程</a>。</p>
+<h3 id="311-上传ssh公钥至gitee">3.1.1 上传SSH公钥至Gitee</h3>
+<p>上方教程有贴图详细教程，在此略过。</p>
+<h3 id="312-创建云仓库">3.1.2 创建云仓库</h3>
+<p>分别在Github及Gitee创建相应的仓库。</p>
+<p>注意，Github仓库名需设置为tesla-xiao.github.io，与我的用户名Tesla-Xiao相一致，方便之后使用 <a href="https://tesla-xiao.github.io">https://tesla-xiao.github.io</a> 进行访问。</p>
+<p>Gitee仓库名需设置为tesla-xiao，与我的用户名Tesla-Xiao相一致，方便之后使用 <a href="https://tesla-xiao.gitee.io">https://tesla-xiao.gitee.io</a> 进行访问。</p>
+<h3 id="312-关联">3.1.2 关联</h3>
+<p>具体操作如下：</p>
+<pre><code>cd public
+git init
+git remote add github git@github.com:Tesla-Xiao/tesla-xiao.github.io.git
+git remote add gitee git@gitee.com:Tesla-Xiao/tesla-xiao.git
+git remote -v # check remote library information
+</code></pre><h2 id="32-发布">3.2 发布</h2>
+<pre><code># cd public
+git add .
+git commit -m &quot;Create.&quot;
+git push github master
+git push gitee master
+</code></pre></div>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+        </div><footer>
+    
+
+    <div class="layui-container">
+        <div class="layui-row">
+            <div class="layui-col-md4 layui-col-sm6 layui-col-xs6">
+                <h3> Related Sites </h3>
+            </div>
+        </div>
+        <div class="layui-row">
+            
+            <div class="layui-col-md4 layui-col-sm6 layui-col-xs12">
+                <a href="https://xliusufe.gitee.io/post/hugomac/"><p class="footer-url">Xu Liu&#39;s blog</p></a>
+            </div>
+            
+        </div>
+    </div>
+    
+    
+    <div class="layui-container">
+        <p class="copyright">Copyright © 2020. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>
