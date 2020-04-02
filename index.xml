@@ -22,10 +22,10 @@
     
     <item>
       <title>Create my blog.</title>
-      <link>https://tesla-xiao.github.io/post/build_blog/</link>
+      <link>https://tesla-xiao.github.io/post/build_blog/build_blog/</link>
       <pubDate>Sun, 29 Mar 2020 17:07:05 +0800</pubDate>
       
-      <guid>https://tesla-xiao.github.io/post/build_blog/</guid>
+      <guid>https://tesla-xiao.github.io/post/build_blog/build_blog/</guid>
       <description>今天建立了blog，以下是对该过程的一个回顾与总结。
 1 Git以及Hugo安装及配置 这一块在网上有很多教程，也没遇到什么难点，在此略过。
 2 使用Hugo建立本地Blog 这一块主要参考Oh oh的博客进行建立，具体过程如下：
