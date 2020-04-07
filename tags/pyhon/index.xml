@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pyhon on Tesla&#39;s blog</title>
+    <link>https://tesla-xiao.github.io/tags/pyhon/</link>
+    <description>Recent content in Pyhon on Tesla&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 05 Apr 2020 14:32:05 +0800</lastBuildDate>
+    
+	<atom:link href="https://tesla-xiao.github.io/tags/pyhon/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python | Make a Python C Extension Module Using Python/C API.</title>
+      <link>https://tesla-xiao.github.io/post/python_call_c/python_call_c/</link>
+      <pubDate>Sun, 05 Apr 2020 14:32:05 +0800</pubDate>
+      
+      <guid>https://tesla-xiao.github.io/post/python_call_c/python_call_c/</guid>
+      <description>This blog introduce how to make a Python C extension module by using Python/C API.
+1 Create package folder Firstly, build the following files and folder：
+. ├── README.md ├── setup.py ├── LICENSE.txt └── src ├── cfunction.c ├── cfunction.h └── _cfunction.c The usage of each file is given below。
+1.1 README.md This file contains instructions for using this external module.。
+1.2 setup.py The main purpose of the setup script is to describe your module distribution to the Distutils, so that the various commands that operate on your modules do the right thing.</description>
+    </item>
+    
+  </channel>
+</rss>

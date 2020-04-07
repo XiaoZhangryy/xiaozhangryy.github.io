@@ -1,0 +1,527 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tesla&#39;s blog - Python | Make a Python C Extension Module Using Python/C API. </title>
+
+    
+    
+    <meta content="Pyhon, C, Python/C API, Package, SKills" name="keywords">
+    
+    <meta content="Tesla&#39;s blog - This blog introduce how to make a Python C extension module by using Python/C API.
+1 Create package folder Firstly, build the following files and folder：
+. ├── README.md ├── setup.py ├── LICENSE.txt └── src ├── cfunction.c ├── cfunction.h └── _cfunction.c The usage of each file is given below。
+1.1 README.md This file contains instructions for using this external module.。
+1.2 setup.py The main purpose of the setup script is to describe your module distribution to the Distutils, so that the various commands that operate on your modules do the right thing." name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+
+    
+
+    
+
+    
+    
+    <script type="text/javascript" async
+        src="/mathjax-3.0.0/tex-mml-chtml.js">
+    </script>
+    
+
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel="stylesheet" href="/self/css/default.css">
+    <script src="/layui/layui.js"></script>
+
+
+    <link rel="stylesheet" async href="/self/css/markdown.min.css">
+    <link rel="stylesheet" async href="/self/css/gallery.css">
+    <link rel="stylesheet" async href="/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="/self/js/lazysizes.min.js" async></script>
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+</head>
+
+<body>
+    
+    <header class="layui-header layui-bg-cyan">
+
+    
+    
+    <a class="nav-self-logo" href="/">
+        Tesla&#39;s blog
+    </a>
+
+    <ul class="layui-nav layui-layout-right layui-bg-cyan" lay-filter="">
+        
+        
+        <li class="layui-nav-item" id="nav_big"><a href="/post/">Posts</a></li>
+        
+
+        
+            
+                <li class="layui-nav-item" id="nav_big"><a href="/zone/">Zone</a></li>
+            
+        
+
+        
+        <li class="layui-nav-item" id="nav_small">
+            <a href="javascript:;">
+                <i class="layui-icon layui-icon-app" style="font-size: 24px;"></i>
+            </a>
+
+            <dl class="layui-nav-child">
+                
+                <dd><a href="/post/">Posts</a></dd>
+                
+
+                
+                    
+                        <dd><a href="/zone/">Zone</a></dd>
+                    
+                
+            </dl>
+        </li>
+    </ul>
+</header>
+
+<script>
+layui.use('element', function(){
+  var element = layui.element;
+});
+</script>
+        <div id="content" style="min-height:80%">
+<div class="layui-container" style="margin-bottom: 10px">
+    
+
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-md12 layui-col-sm12 layui-col-xs12">
+            <div class="layui-card single-card">
+                <br />
+                <blockquote class="layui-elem-quote markdown-body single-title" >
+                    <h1>Python | Make a Python C Extension Module Using Python/C API.</h1>
+                    <h3 style="margin-top:10px; margin-bottom:10px"> 
+    <i class="layui-icon layui-icon-date" style="font-size: 24px; vertical-align: -2px;"></i>
+    <span>2020-04-05</span>
+
+    
+    <i class="layui-icon layui-icon-tabs" style="font-size: 22px; vertical-align: 0px;"></i>
+    
+        <a href="/tags/pyhon">
+            <span class="layui-badge" style="vertical-align: 2px;">Pyhon</span>
+        </a>
+    
+        <a href="/tags/c">
+            <span class="layui-badge" style="vertical-align: 2px;">C</span>
+        </a>
+    
+        <a href="/tags/python/c-api">
+            <span class="layui-badge" style="vertical-align: 2px;">Python/C API</span>
+        </a>
+    
+        <a href="/tags/package">
+            <span class="layui-badge" style="vertical-align: 2px;">Package</span>
+        </a>
+    
+</h3>
+                </blockquote>
+                <div class="layui-card-body markdown-body single-content">
+                    <p>This blog introduce how to make a Python C extension module by using Python/C API.</p>
+<h1 id="1-create-package-folder">1 Create package folder</h1>
+<p>Firstly, build the following files and folder：</p>
+<pre><code>.
+├── README.md
+├── setup.py
+├── LICENSE.txt
+└── src
+    ├── cfunction.c
+    ├── cfunction.h
+    └── _cfunction.c
+</code></pre><p>The usage of each file is given below。</p>
+<h2 id="11-readmemd">1.1 <strong>README.md</strong></h2>
+<p>This file contains instructions for using this external module.。</p>
+<h2 id="12-setuppy">1.2 <strong>setup.py</strong></h2>
+<p>The main purpose of the setup script is to describe your module distribution to the Distutils, so that the various commands that operate on your modules do the right thing. Here, our <strong>setup.py</strong> file is built as follows.</p>
+<pre><code>from setuptools import setup, Extension, find_packages
+import numpy
+
+extensions = Extension('Demo',  # your extension module name
+                        sources = ['src/cfunction.c', 'src/_cfunction.c'] )
+
+setup(
+    name='mydemo', # A name shown on Pypi.
+    version='0.1', 
+    ext_modules = [extensions],
+    license='MIT',
+    description='A toy python package with C extension',
+    long_description=open('README.md').read(),
+    install_requires=[],
+    url='https://github.com/Tesla-Xiao/mydemo',
+    author='Xiao Zhang',
+    author_email='zhangxiao_0422@163.com',
+    include_dirs = [numpy.get_include()]
+)
+</code></pre><p>For more information, see <a href="https://docs.python.org/3/distutils/setupscript.html">official document</a>.</p>
+<h2 id="13-licensetxt">1.3 <strong>LICENSE.txt</strong></h2>
+<ul>
+<li>
+<p>The open source licenses of our module.</p>
+</li>
+<li>
+<p>The website <a href="https://choosealicense.com/">Choose an open source license</a> may helpful.</p>
+</li>
+<li>
+<p>You can reference <a href="https://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html">阮一峰的博文</a> for more information about the difference between the six most popular licenses.</p>
+</li>
+</ul>
+<figure>
+    <img src="/post/python_call_c/free_software_licenses.png" width="70%"/> 
+</figure>
+
+<blockquote>
+<p>Image quoted from <a href="https://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html">阮一峰的博文</a></p>
+</blockquote>
+<h1 id="2-interface">2 Interface</h1>
+<p>This section introduces the files under folder <strong>src</strong>.</p>
+<h2 id="21-cfunctionc">2.1 <strong>cfunction.c</strong></h2>
+<p>This file contains the C function we want to use in Python. In our demo package, it is constructed as following:</p>
+<pre><code>#include &quot;cfunction.h&quot;
+#include &lt;math.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#define PI 3.1415926535
+
+void mycfunc(double *array_d, int *array_i, double d, int i, char *array_c, double *output) 
+{
+	if (strcmp(array_c, &quot;cos&quot;) == 0)
+	{
+		output[0] = cos(array_d[0] + array_i[0] * PI);
+		output[1] = cos(d + i * PI);
+	} elif (strcmp(array_c, &quot;sin&quot;) == 0) {
+		output[0] = sin(array_d[0] + array_i[0] * PI);
+		output[1] = sin(d + i * PI);
+	}
+}
+</code></pre><h2 id="22-cfunctionh">2.2 <strong>cfunction.h</strong></h2>
+<p>As a good habit, we can declare our functions in <em>cfunction.h</em>.</p>
+<pre><code>void mycfunc(double *array_d, int *array_i, double d, int i, char *array_c, double *output);
+</code></pre><h2 id="23-_cfunctionc">2.3 <strong>_cfunction.c</strong></h2>
+<p>To wrap this to python, we need <em>_cfunction.c</em>.
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">75
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">76
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">77
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">78
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">79
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">80
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">81
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">82
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">83
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">84
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">85
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">86
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">87
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">88
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">89
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">90
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">91
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">92
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">93
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">94
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">95
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">96
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">97
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">98
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">99
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">include</span> &lt;<span style="color:#a6e22e">Python</span>.<span style="color:#a6e22e">h</span>&gt;
+<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">include</span> <span style="color:#e6db74">&#34;cfunction.h&#34;</span>
+<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">include</span> &lt;<span style="color:#a6e22e">numpy</span><span style="color:#f92672">/</span><span style="color:#a6e22e">arrayobject</span>.<span style="color:#a6e22e">h</span>&gt;
+
+<span style="color:#a6e22e">static</span> <span style="color:#a6e22e">PyObject</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">py_mycfunc</span>(<span style="color:#a6e22e">PyObject</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">self</span>, <span style="color:#a6e22e">PyObject</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">args</span>) {
+
+    <span style="color:#a6e22e">PyObject</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">py_x</span>, <span style="color:#f92672">*</span><span style="color:#a6e22e">py_y</span>;
+    <span style="color:#a6e22e">double</span> <span style="color:#a6e22e">number_a</span>;
+    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">number_b</span>;
+    <span style="color:#a6e22e">char</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">array_c</span>;
+
+    <span style="color:#66d9ef">if</span> (!<span style="color:#a6e22e">PyArg_ParseTuple</span>(<span style="color:#a6e22e">args</span>,<span style="color:#e6db74">&#34;OOdis&#34;</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">py_x</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">py_y</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">number_a</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">number_b</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">array_c</span>)) {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">NULL</span>;
+    }
+
+    <span style="color:#75715e">// Interpret the input objects as numpy arrays with contiguous storage. 
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">PyObject</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">py_x_array</span> = <span style="color:#a6e22e">PyArray_FROM_OTF</span>(<span style="color:#a6e22e">py_x</span>, <span style="color:#a6e22e">NPY_DOUBLE</span>, <span style="color:#a6e22e">NPY_IN_ARRAY</span>);
+    <span style="color:#a6e22e">PyObject</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">py_y_array</span> = <span style="color:#a6e22e">PyArray_FROM_OTF</span>(<span style="color:#a6e22e">py_y</span>, <span style="color:#a6e22e">NPY_INT</span>, <span style="color:#a6e22e">NPY_IN_ARRAY</span>);
+
+    <span style="color:#75715e">// If that didn&#39;t work, throw an exception. 
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">py_x_array</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">NULL</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">py_y_array</span><span style="color:#f92672">==</span> <span style="color:#a6e22e">NULL</span> ) {
+        <span style="color:#a6e22e">Py_XDECREF</span>(<span style="color:#a6e22e">py_x_array</span>);
+        <span style="color:#a6e22e">Py_XDECREF</span>(<span style="color:#a6e22e">py_y_array</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">NULL</span>;
+    }
+
+    <span style="color:#75715e">// Dimensions.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">nx</span>, <span style="color:#a6e22e">px</span>, <span style="color:#a6e22e">ny</span>;
+    <span style="color:#a6e22e">nx</span> = (<span style="color:#66d9ef">int</span>)<span style="color:#a6e22e">PyArray_DIM</span>(<span style="color:#a6e22e">py_x_array</span>, <span style="color:#ae81ff">0</span>);
+    <span style="color:#a6e22e">px</span> = (<span style="color:#66d9ef">int</span>)<span style="color:#a6e22e">PyArray_DIM</span>(<span style="color:#a6e22e">py_x_array</span>, <span style="color:#ae81ff">1</span>);
+    <span style="color:#a6e22e">ny</span> = (<span style="color:#66d9ef">int</span>)<span style="color:#a6e22e">PyArray_DIM</span>(<span style="color:#a6e22e">py_y_array</span>, <span style="color:#ae81ff">0</span>);
+
+    <span style="color:#75715e">// Exception Handling
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">nx</span> <span style="color:#f92672">!=</span>  <span style="color:#a6e22e">ny</span> ) {
+        <span style="color:#a6e22e">PyErr_SetString</span>(<span style="color:#a6e22e">PyExc_ValueError</span>, <span style="color:#e6db74">&#34;Dimensions don&#39;t match!!&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">NULL</span>;
+    }
+
+    <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">strcmp</span>(<span style="color:#a6e22e">array_c</span>, <span style="color:#e6db74">&#34;cos&#34;</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">strcmp</span>(<span style="color:#a6e22e">array_c</span>, <span style="color:#e6db74">&#34;sin&#34;</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+        <span style="color:#a6e22e">PyErr_SetString</span>(<span style="color:#a6e22e">PyExc_TypeError</span>, <span style="color:#e6db74">&#34;Only support cos function and sin function now.&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">NULL</span>;
+    }
+
+    <span style="color:#75715e">// Get pointers to the data as C-types.
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">double</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">x</span> = (<span style="color:#a6e22e">double</span><span style="color:#f92672">*</span>) <span style="color:#a6e22e">PyArray_DATA</span>(<span style="color:#a6e22e">py_x_array</span>);
+    <span style="color:#66d9ef">int</span>    <span style="color:#f92672">*</span><span style="color:#a6e22e">y</span> = (<span style="color:#66d9ef">int</span><span style="color:#f92672">*</span>)    <span style="color:#a6e22e">PyArray_DATA</span>(<span style="color:#a6e22e">py_y_array</span>);
+
+    <span style="color:#75715e">// Create an output array.
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">double</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">c_output</span>;
+    <span style="color:#a6e22e">c_output</span> = (<span style="color:#a6e22e">double</span><span style="color:#f92672">*</span>)<span style="color:#a6e22e">malloc</span>(<span style="color:#a6e22e">sizeof</span>(<span style="color:#a6e22e">double</span>)<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>);
+
+    <span style="color:#75715e">// Call the external C function.
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">mycfunc</span>( <span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">number_a</span>, <span style="color:#a6e22e">number_b</span>, <span style="color:#a6e22e">array_c</span>, <span style="color:#a6e22e">c_output</span> );
+
+
+    <span style="color:#75715e">// Create a numpy array and return it.
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">npy_intp</span> <span style="color:#a6e22e">dims</span>[<span style="color:#ae81ff">1</span>] = {<span style="color:#ae81ff">2</span>};
+    <span style="color:#a6e22e">PyObject</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">ret</span> = <span style="color:#a6e22e">PyArray_SimpleNewFromData</span>(<span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">dims</span>, <span style="color:#a6e22e">NPY_DOUBLE</span>, <span style="color:#a6e22e">c_output</span>);
+
+    <span style="color:#75715e">// Clean up. 
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">free</span>(<span style="color:#a6e22e">c_output</span>);
+    <span style="color:#a6e22e">Py_DECREF</span>(<span style="color:#a6e22e">py_x_array</span>);
+    <span style="color:#a6e22e">Py_DECREF</span>(<span style="color:#a6e22e">py_y_array</span>);
+
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ret</span>;
+}
+
+<span style="color:#75715e">/* Documentations */</span>
+<span style="color:#a6e22e">static</span> <span style="color:#a6e22e">char</span> <span style="color:#a6e22e">module_docs</span>[] = <span style="color:#e6db74">&#34;Some thing about your module.&#34;</span>;
+
+<span style="color:#a6e22e">static</span> <span style="color:#a6e22e">char</span> <span style="color:#a6e22e">cfunction_docs</span>[] = <span style="color:#e6db74">&#34;Some thing about your C function.&#34;</span>;
+
+<span style="color:#75715e">/* Module method table */</span>
+<span style="color:#a6e22e">static</span> <span style="color:#a6e22e">PyMethodDef</span> <span style="color:#a6e22e">MydemoMethods</span>[] = {
+  {<span style="color:#e6db74">&#34;mycfunc&#34;</span>,  <span style="color:#a6e22e">py_mycfunc</span>, <span style="color:#a6e22e">METH_VARARGS</span>, <span style="color:#a6e22e">cfunction_docs</span>},
+  <span style="color:#75715e">/* If your extension module has many export functions, you need write interfaces for each of them. */</span>
+  <span style="color:#75715e">/* And then add them to Module method table. For example: */</span>
+  <span style="color:#75715e">/* {&#34;mycfunc2&#34;,  py_mycfunc2, METH_VARARGS, cfunction2_docs}, */</span>
+  { <span style="color:#a6e22e">NULL</span>, <span style="color:#a6e22e">NULL</span>, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">NULL</span>}
+};
+
+<span style="color:#75715e">/* Module structure */</span>
+<span style="color:#a6e22e">static</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">PyModuleDef</span> <span style="color:#a6e22e">demomodule</span> = {
+    <span style="color:#a6e22e">PyModuleDef_HEAD_INIT</span>,
+    <span style="color:#e6db74">&#34;Demo&#34;</span>,           <span style="color:#75715e">/* name of module */</span>
+    <span style="color:#a6e22e">module_docs</span>,        <span style="color:#75715e">/* Doc string (may be NULL) */</span>
+    <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,                 <span style="color:#75715e">/* Size of per-interpreter state or -1 */</span>
+    <span style="color:#a6e22e">MydemoMethods</span>       <span style="color:#75715e">/* Method table */</span>
+};
+
+<span style="color:#75715e">/* Module initialization function */</span>
+<span style="color:#a6e22e">PyMODINIT_FUNC</span> <span style="color:#a6e22e">PyInit_Demo</span>(<span style="color:#a6e22e">void</span>) {
+    <span style="color:#a6e22e">PyObject</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">object</span> = <span style="color:#a6e22e">PyModule_Create</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">demomodule</span>);
+    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">object</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">NULL</span>) {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">NULL</span>;
+    }
+    <span style="color:#a6e22e">import_array</span>();
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">object</span>;
+}</code></pre></td></tr></table>
+</div>
+</div>
+This code snippet references many object structures, the links to the official documents of main functions are given below.</p>
+<ul>
+<li><a href="https://docs.python.org/3/c-api/structures.html">PyObject</a> (line 5).</li>
+<li><a href="https://docs.python.org/3/c-api/arg.html">PyArg_ParseTuple</a> (line 12) are used for Parsing arguments and building values.</li>
+<li><a href="https://docs.scipy.org/doc/numpy/reference/c-api.array.html">Array API</a> helps you get access to the array object, includes <strong>PyArray_FROM_OTF</strong>(line 17), <strong>PyArray_DIM</strong>(line 29), <strong>PyArray_DATA</strong> (line 45) and <strong>PyArray_SimpleNewFromData</strong> (line 58).</li>
+<li><a href="https://docs.python.org/3/c-api/refcounting.html">Reference Counting</a> are used for managing reference counts of Python objects, includes <strong>Py_XDECREF</strong> (line 22).</li>
+<li><a href="https://docs.python.org/3/c-api/exceptions.html">Exception Handling</a> helps you handle and raise Python exceptions, includes raising exceptions (<strong>PyErr_SetString</strong> in line 35) and standard Python exceptions (<strong>PyExc_ValueError</strong> in line 35 and <strong>PyExc_TypeError</strong> in line 40).</li>
+<li><a href="https://docs.python.org/3/c-api/module.html">Module Objects</a> includes <strong>PyModuleDef</strong> (the module definition struct, in line 75) and <strong>PyModule_Create</strong> (the module initialization function, in line 94).</li>
+</ul>
+<p>For more information, see <a href="https://docs.python.org/3/c-api/index.html">Python/C API Reference Manual</a>.</p>
+<h1 id="3-package">3 Package</h1>
+<p>Now, we can use the command to package our package, and use git to push it to Github.</p>
+<h2 id="31-package-our-package">3.1 Package our package</h2>
+<pre><code># cd to our package folder
+python setup.py build   // build our package
+python setup.py sdist   // Create a source distribution.
+python setup.py install // install our package
+</code></pre><h2 id="32-test-our-package">3.2 Test our package</h2>
+<p>Then, from Python, we can test our package using the following code snippet.</p>
+<pre><code>import numpy as np
+import Demo
+
+n  = 4
+p  = 5
+X  = []
+for _ in range(n):
+    X.append(np.random.normal(size= p))
+x = np.asarray(X)
+
+y = np.random.choice(10, p)
+
+Demo.mycfunc(x, y, 3.14, 2020, 'sin')  // Raising the ValueError we set.
+
+y = np.random.choice(10, n)
+
+Demo.mycfunc(x, y, 3.14, 2020, 'six')  // Raising the TypeError we set.
+
+Demo.mycfunc(x, y, 3.14, 2020, 'sin')
+Demo.mycfunc(x, y, 3.14, 2020, 'cos')
+</code></pre><h2 id="33-push-to-github">3.3 Push to Github</h2>
+<p>Finally, we can push our package to Github.</p>
+<pre><code>git add .
+git commit -m &quot;Create my package.&quot;
+git push origin master
+</code></pre><p>Then, we can also iinstall your package from Github by</p>
+<pre><code>pip install git+https://github.com/Tesla-Xiao/mydemo.git
+</code></pre></div>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+        </div><footer>
+    
+
+    <div class="layui-container">
+        <div class="layui-row">
+            <div class="layui-col-md4 layui-col-sm6 layui-col-xs6">
+                <h3> Related Sites </h3>
+            </div>
+        </div>
+        <div class="layui-row">
+            
+            <div class="layui-col-md4 layui-col-sm6 layui-col-xs12">
+                <a href="https://xliusufe.gitee.io/post/hugomac/"><p class="footer-url">Xu Liu&#39;s blog</p></a>
+            </div>
+            
+        </div>
+    </div>
+    
+    
+    <div class="layui-container">
+        <p class="copyright">Copyright © 2020. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>
