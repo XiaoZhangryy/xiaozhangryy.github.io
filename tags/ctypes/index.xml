@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>C on Tesla&#39;s blog</title>
-    <link>https://tesla-xiao.github.io/tags/c/</link>
-    <description>Recent content in C on Tesla&#39;s blog</description>
+    <title>ctypes on Tesla&#39;s blog</title>
+    <link>https://tesla-xiao.github.io/tags/ctypes/</link>
+    <description>Recent content in ctypes on Tesla&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Fri, 10 Apr 2020 15:36:05 +0800</lastBuildDate>
     
-	<atom:link href="https://tesla-xiao.github.io/tags/c/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tesla-xiao.github.io/tags/ctypes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,18 +20,6 @@
       <description>This blog introduce how to use ctypes to access C code from Python.
 1 C code Here, we use the same C code as my previous blog:
 #include &amp;lt;math.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;string.h&amp;gt; #define PI 3.1415926535 void mycfunc(double *array_d, int *array_i, double d, int i, char *array_c, double *output) { if (strcmp(array_c, &amp;quot;cos&amp;quot;) == 0) { output[0] = cos(array_d[0] + array_i[0] * PI); output[1] = cos(d + i * PI); } elif (strcmp(array_c, &amp;quot;sin&amp;quot;) == 0) { output[0] = sin(array_d[0] + array_i[0] * PI); output[1] = sin(d + i * PI); } } 2 Compile We can use Python to compile the C file into shared library.</description>
-    </item>
-    
-    <item>
-      <title>Python | Make a Python C Extension Module Using Python/C API.</title>
-      <link>https://tesla-xiao.github.io/post/python_call_c/python_call_c/</link>
-      <pubDate>Sun, 05 Apr 2020 14:32:05 +0800</pubDate>
-      
-      <guid>https://tesla-xiao.github.io/post/python_call_c/python_call_c/</guid>
-      <description>This blog introduce how to make a Python C extension module by using Python/C API. The demo package used here can be found on my Github repository.
-1 Create package folder Firstly, build the following files and folder：
-. ├── README.md ├── setup.py ├── LICENSE.txt └── src ├── cfunction.c ├── cfunction.h └── _cfunction.c The usage of each file is given below。
-1.1 README.md This file contains instructions for using this external module.</description>
     </item>
     
   </channel>

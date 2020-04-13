@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Tesla&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 05 Apr 2020 14:32:05 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 10 Apr 2020 15:36:05 +0800</lastBuildDate>
     
 	<atom:link href="https://tesla-xiao.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,27 @@
     <item>
       <title>C</title>
       <link>https://tesla-xiao.github.io/tags/c/</link>
-      <pubDate>Sun, 05 Apr 2020 14:32:05 +0800</pubDate>
+      <pubDate>Fri, 10 Apr 2020 15:36:05 +0800</pubDate>
       
       <guid>https://tesla-xiao.github.io/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ctypes</title>
+      <link>https://tesla-xiao.github.io/tags/ctypes/</link>
+      <pubDate>Fri, 10 Apr 2020 15:36:05 +0800</pubDate>
+      
+      <guid>https://tesla-xiao.github.io/tags/ctypes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pyhon</title>
+      <link>https://tesla-xiao.github.io/tags/pyhon/</link>
+      <pubDate>Fri, 10 Apr 2020 15:36:05 +0800</pubDate>
+      
+      <guid>https://tesla-xiao.github.io/tags/pyhon/</guid>
       <description></description>
     </item>
     
@@ -26,15 +44,6 @@
       <pubDate>Sun, 05 Apr 2020 14:32:05 +0800</pubDate>
       
       <guid>https://tesla-xiao.github.io/tags/package/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Pyhon</title>
-      <link>https://tesla-xiao.github.io/tags/pyhon/</link>
-      <pubDate>Sun, 05 Apr 2020 14:32:05 +0800</pubDate>
-      
-      <guid>https://tesla-xiao.github.io/tags/pyhon/</guid>
       <description></description>
     </item>
     

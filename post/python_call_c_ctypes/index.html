@@ -1,0 +1,344 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tesla&#39;s blog - Python | Using ctypes to access C code from Python. </title>
+
+    
+    
+    <meta content="Pyhon, C, ctypes, SKills" name="keywords">
+    
+    <meta content="Tesla&#39;s blog - This blog introduce how to use ctypes to access C code from Python.
+1 C code Here, we use the same C code as my previous blog:
+#include &lt;math.h&gt; #include &lt;stdlib.h&gt; #include &lt;stdio.h&gt; #include &lt;string.h&gt; #define PI 3.1415926535 void mycfunc(double *array_d, int *array_i, double d, int i, char *array_c, double *output) { if (strcmp(array_c, &quot;cos&quot;) == 0) { output[0] = cos(array_d[0] &#43; array_i[0] * PI); output[1] = cos(d &#43; i * PI); } elif (strcmp(array_c, &quot;sin&quot;) == 0) { output[0] = sin(array_d[0] &#43; array_i[0] * PI); output[1] = sin(d &#43; i * PI); } } 2 Compile We can use Python to compile the C file into shared library." name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+
+    
+
+    
+
+    
+    
+    <script type="text/javascript" async
+        src="/mathjax-3.0.0/tex-mml-chtml.js">
+    </script>
+    
+
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel="stylesheet" href="/self/css/default.css">
+    <script src="/layui/layui.js"></script>
+
+
+    <link rel="stylesheet" async href="/self/css/markdown.min.css">
+    <link rel="stylesheet" async href="/self/css/gallery.css">
+    <link rel="stylesheet" async href="/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="/self/js/lazysizes.min.js" async></script>
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+</head>
+
+<body>
+    
+    <header class="layui-header layui-bg-cyan">
+
+    
+    
+    <a class="nav-self-logo" href="/">
+        Tesla&#39;s blog
+    </a>
+
+    <ul class="layui-nav layui-layout-right layui-bg-cyan" lay-filter="">
+        
+        
+        <li class="layui-nav-item" id="nav_big"><a href="/post/">Posts</a></li>
+        
+
+        
+            
+                <li class="layui-nav-item" id="nav_big"><a href="/zone/">Zone</a></li>
+            
+        
+
+        
+        <li class="layui-nav-item" id="nav_small">
+            <a href="javascript:;">
+                <i class="layui-icon layui-icon-app" style="font-size: 24px;"></i>
+            </a>
+
+            <dl class="layui-nav-child">
+                
+                <dd><a href="/post/">Posts</a></dd>
+                
+
+                
+                    
+                        <dd><a href="/zone/">Zone</a></dd>
+                    
+                
+            </dl>
+        </li>
+    </ul>
+</header>
+
+<script>
+layui.use('element', function(){
+  var element = layui.element;
+});
+</script>
+        <div id="content" style="min-height:80%">
+<div class="layui-container" style="margin-bottom: 10px">
+    
+
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-md8 layui-col-sm12 layui-col-xs12">
+            <div class="layui-card single-card">
+                <br />
+                <blockquote class="layui-elem-quote markdown-body single-title" >
+                    <h1>Python | Using ctypes to access C code from Python.</h1>
+                    <h3 style="margin-top:10px; margin-bottom:10px"> 
+    <i class="layui-icon layui-icon-date" style="font-size: 24px; vertical-align: -2px;"></i>
+    <span>2020-04-10</span>
+
+    
+    <i class="layui-icon layui-icon-tabs" style="font-size: 22px; vertical-align: 0px;"></i>
+    
+        <a href="/tags/pyhon">
+            <span class="layui-badge" style="vertical-align: 2px;">Pyhon</span>
+        </a>
+    
+        <a href="/tags/c">
+            <span class="layui-badge" style="vertical-align: 2px;">C</span>
+        </a>
+    
+        <a href="/tags/ctypes">
+            <span class="layui-badge" style="vertical-align: 2px;">ctypes</span>
+        </a>
+    
+</h3>
+                </blockquote>
+                <div class="layui-card-body markdown-body single-content">
+                    <p>This blog introduce how to use ctypes to access C code from Python.</p>
+<h1 id="1-c-code">1 C code</h1>
+<p>Here, we use the same C code as <a href="%22/post/python_call_c%22">my previous blog</a>:</p>
+<pre><code>#include &lt;math.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#define PI 3.1415926535
+
+void mycfunc(double *array_d, int *array_i, double d, int i, char *array_c, double *output) 
+{
+    if (strcmp(array_c, &quot;cos&quot;) == 0)
+    {
+        output[0] = cos(array_d[0] + array_i[0] * PI);
+        output[1] = cos(d + i * PI);
+    } elif (strcmp(array_c, &quot;sin&quot;) == 0) {
+        output[0] = sin(array_d[0] + array_i[0] * PI);
+        output[1] = sin(d + i * PI);
+    }
+}
+</code></pre><h1 id="2-compile">2 Compile</h1>
+<p>We can use Python to compile the C file into shared library.</p>
+<pre><code>import os
+# Set the current working directory as your folder
+# os.chdir('your folder path')
+
+# on Windows
+os.system('gcc -shared -o cfunction.dll cfunction.c')
+
+# on Linux or Mac
+os.system('gcc -shared -o cfunction.so cfunction.c')
+</code></pre><p>Or you can use system command achieve it.</p>
+<pre><code># cd to your folder
+
+# on Windows
+gcc -shared -o cfunction.dll cfunction.c
+
+# on Linux or Mac
+gcc -shared -o cfunction.so cfunction.c
+</code></pre><h1 id="3-load">3 Load</h1>
+<p>Assuming that the py code is located in the same folder, then we can load the shared object file by:</p>
+<pre><code>import ctypes
+
+# on Windows
+_myfun = ctypes.CDLL('./cfunction.dll')
+
+# on Linux or Mac
+_myfun = ctypes.CDLL('./cfunction.so')
+</code></pre><h1 id="4-specifying-the-required-argument-types-function-prototypes-and-return-types">4 Specifying the required argument types (function prototypes) and Return types</h1>
+<p>We can specify the required argument types of functions exported from DLLs by setting the <strong>argtypes</strong> attribute. In addition, by default functions are assumed to return the C int type. Other return types can be specified by setting the <strong>restype</strong> attribute of the function object.</p>
+<pre><code># set the argument type
+_myfun.mycfunc.argtypes = [ctypes.POINTER(ctypes.c_double),
+                           ctypes.POINTER(ctypes.c_int),
+                           ctypes.c_double,
+                           ctypes.c_int,
+                           ctypes.POINTER(ctypes.c_char),
+                           ctypes.POINTER(ctypes.c_double)]
+# set the return type
+_myfun.mycfunc.restype = None
+</code></pre><p>Where <strong>ctypes.POINTER</strong> creates and returns a new ctypes pointer type.</p>
+<p>The underlying C code expects to receive a pointer and a length representing an array. However, from Python side, a Python &ldquo;array&rdquo; can be a list, a tuple, a <em>numpy</em> array and so on. The following <strong>DoubleArrayType</strong> class shows how to handle this situation.</p>
+<pre><code>class DoubleArrayType:
+    def from_param(self, param):
+        typename = type(param).__name__
+        if hasattr(self, 'from_' + typename):
+            return getattr(self, 'from_' + typename)(param)
+        elif isinstance(param, ctypes.Array):
+            return param
+        else:
+            raise TypeError(&quot;Can't convert %s&quot; % typename)
+
+    # Cast from array.array objects
+    def from_array(self, param):
+        if param.typecode != 'd':
+            raise TypeError('must be an array of doubles')
+        ptr, _ = param.buffer_info()
+        return ctypes.cast(ptr, ctypes.POINTER(ctypes.c_double))
+
+    # Cast from lists/tuples
+    def from_list(self, param):
+        val = ((ctypes.c_double)*len(param))(*param)
+        return val
+
+    from_tuple = from_list
+
+    # Cast from a numpy array
+    def from_ndarray(self, param):
+        return param.ctypes.data_as(ctypes.POINTER(ctypes.c_double))
+</code></pre><p>Class <strong>IntArrayType</strong> and <strong>CharArrayType</strong> can be similarly defined. Then, we can set the required argument types as</p>
+<pre><code>_myfun.mycfunc.argtypes = [DoubleArrayType(),
+                           IntArrayType(),
+                           ctypes.c_double,
+                           ctypes.c_int,
+                           CharArrayType(),
+                           DoubleArrayType()]
+</code></pre><h1 id="5-wrapper-function">5 Wrapper function</h1>
+<p>It is common to write a small wrapper function for our C code.</p>
+<pre><code>import numpy as np
+
+def myfun(x, y, a, b, s):
+    output = np.asarray(range(2)).astype(float)
+    
+    _myfun.mycfunc(x, 
+                   y, 
+                   ctypes.c_double(a), 
+                   ctypes.c_int(b), 
+                   str.encode(s), 
+                   output)
+    return output
+</code></pre><h1 id="one-more-thing">One more thing</h1>
+<p>If you want to sent a matrix from Python to C, make sure it is contiguously stored. For <em>numpy</em> array, we can use following code to convert.</p>
+<pre><code>if not x.flags['C_CONTIGUOUS']:
+    x = np.ascontiguous(x, dtype=x.dtype)
+</code></pre></div>
+            </div>
+        </div>
+
+        
+        <div class="layui-col-md4 layui-col-sm12 layui-col-xs12">
+            <div class="layui-card single-card">
+                <h1 class="single-title">Relevant Topics</h1>
+                
+                	
+                    <div style="margin-left: 10px;">
+                        <blockquote class="layui-elem-quote" style="background-color:#FFFFFF;margin-top: 10px;">
+                            <a href="/post/python_call_c/python_call_c/">
+                                <h2 class="">Python | Make a Python C Extension Module Using Python/C API.</h2>
+                            </a>
+                            <h3 style="margin-top:10px; margin-bottom:10px"> 
+    <i class="layui-icon layui-icon-date" style="font-size: 24px; vertical-align: -2px;"></i>
+    <span>2020-04-05</span>
+
+    
+    <i class="layui-icon layui-icon-tabs" style="font-size: 22px; vertical-align: 0px;"></i>
+    
+        <a href="/tags/pyhon">
+            <span class="layui-badge" style="vertical-align: 2px;">Pyhon</span>
+        </a>
+    
+        <a href="/tags/c">
+            <span class="layui-badge" style="vertical-align: 2px;">C</span>
+        </a>
+    
+        <a href="/tags/python/c-api">
+            <span class="layui-badge" style="vertical-align: 2px;">Python/C API</span>
+        </a>
+    
+        <a href="/tags/package">
+            <span class="layui-badge" style="vertical-align: 2px;">Package</span>
+        </a>
+    
+</h3>
+                        </blockquote>
+                    </div>
+                	
+                
+                <br />
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+        </div><footer>
+    
+
+    <div class="layui-container">
+        <div class="layui-row">
+            <div class="layui-col-md4 layui-col-sm6 layui-col-xs6">
+                <h3> Related Sites </h3>
+            </div>
+        </div>
+        <div class="layui-row">
+            
+            <div class="layui-col-md4 layui-col-sm6 layui-col-xs12">
+                <a href="https://xliusufe.gitee.io/post/hugomac/"><p class="footer-url">Xu Liu&#39;s blog</p></a>
+            </div>
+            
+        </div>
+    </div>
+    
+    
+    <div class="layui-container">
+        <p class="copyright">Copyright © 2020. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>
