@@ -1,67 +1,94 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Tesla&#39;s blog</title>
-    <link>https://tesla-xiao.github.io/tags/</link>
-    <description>Recent content in Tags on Tesla&#39;s blog</description>
+    <title>Tags on Xiao&#39;s blog</title>
+    <link>https://xiaozhangryy.github.io/tags/</link>
+    <description>Recent content in Tags on Xiao&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 10 Apr 2020 15:36:05 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2020 22:11:18 +0800</lastBuildDate>
     
-	<atom:link href="https://tesla-xiao.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xiaozhangryy.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>C</title>
-      <link>https://tesla-xiao.github.io/tags/c/</link>
-      <pubDate>Fri, 10 Apr 2020 15:36:05 +0800</pubDate>
+      <link>https://xiaozhangryy.github.io/tags/c/</link>
+      <pubDate>Tue, 24 Nov 2020 22:11:18 +0800</pubDate>
       
-      <guid>https://tesla-xiao.github.io/tags/c/</guid>
+      <guid>https://xiaozhangryy.github.io/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>consistency</title>
+      <link>https://xiaozhangryy.github.io/tags/consistency/</link>
+      <pubDate>Tue, 24 Nov 2020 22:11:18 +0800</pubDate>
+      
+      <guid>https://xiaozhangryy.github.io/tags/consistency/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>High-dimension</title>
+      <link>https://xiaozhangryy.github.io/tags/high-dimension/</link>
+      <pubDate>Tue, 24 Nov 2020 22:11:18 +0800</pubDate>
+      
+      <guid>https://xiaozhangryy.github.io/tags/high-dimension/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Proof</title>
+      <link>https://xiaozhangryy.github.io/tags/proof/</link>
+      <pubDate>Tue, 24 Nov 2020 22:11:18 +0800</pubDate>
+      
+      <guid>https://xiaozhangryy.github.io/tags/proof/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ctypes</title>
-      <link>https://tesla-xiao.github.io/tags/ctypes/</link>
+      <link>https://xiaozhangryy.github.io/tags/ctypes/</link>
       <pubDate>Fri, 10 Apr 2020 15:36:05 +0800</pubDate>
       
-      <guid>https://tesla-xiao.github.io/tags/ctypes/</guid>
+      <guid>https://xiaozhangryy.github.io/tags/ctypes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pyhon</title>
-      <link>https://tesla-xiao.github.io/tags/pyhon/</link>
+      <link>https://xiaozhangryy.github.io/tags/pyhon/</link>
       <pubDate>Fri, 10 Apr 2020 15:36:05 +0800</pubDate>
       
-      <guid>https://tesla-xiao.github.io/tags/pyhon/</guid>
+      <guid>https://xiaozhangryy.github.io/tags/pyhon/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Package</title>
-      <link>https://tesla-xiao.github.io/tags/package/</link>
+      <link>https://xiaozhangryy.github.io/tags/package/</link>
       <pubDate>Sun, 05 Apr 2020 14:32:05 +0800</pubDate>
       
-      <guid>https://tesla-xiao.github.io/tags/package/</guid>
+      <guid>https://xiaozhangryy.github.io/tags/package/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hugo</title>
-      <link>https://tesla-xiao.github.io/tags/hugo/</link>
+      <link>https://xiaozhangryy.github.io/tags/hugo/</link>
       <pubDate>Sun, 29 Mar 2020 17:07:05 +0800</pubDate>
       
-      <guid>https://tesla-xiao.github.io/tags/hugo/</guid>
+      <guid>https://xiaozhangryy.github.io/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python/C API</title>
-      <link>https://tesla-xiao.github.io/tags/python/c-api/</link>
+      <link>https://xiaozhangryy.github.io/tags/python/c-api/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tesla-xiao.github.io/tags/python/c-api/</guid>
+      <guid>https://xiaozhangryy.github.io/tags/python/c-api/</guid>
       <description></description>
     </item>
     

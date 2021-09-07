@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>High-dimension on Xiao&#39;s blog</title>
+    <link>https://xiaozhangryy.github.io/tags/high-dimension/</link>
+    <description>Recent content in High-dimension on Xiao&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 24 Nov 2020 22:11:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://xiaozhangryy.github.io/tags/high-dimension/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>High dimension | Some notes on proof of high-dimensional consistency</title>
+      <link>https://xiaozhangryy.github.io/post/hd_consistency_proof/</link>
+      <pubDate>Tue, 24 Nov 2020 22:11:18 +0800</pubDate>
+      
+      <guid>https://xiaozhangryy.github.io/post/hd_consistency_proof/</guid>
+      <description>[@VanderVaart1996]</description>
+    </item>
+    
+  </channel>
+</rss>
