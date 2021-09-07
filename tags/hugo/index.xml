@@ -25,7 +25,7 @@
 ├─archetypes ├─content ├─data ├─layouts ├─static ├─themes └─config.toml 2.2 下载一个主题 在Hugo主题商店挑选一款自己喜欢的主题直接clone下来就行。
 cd themes git clone https://github.com/ertuil/erblog.git themes文件夹用处存放各式主题，可以多下载几个尝试一下不同风格。
 2.3 配置config.toml 这里我参考了两份官方文档，分别关于Configure与Taxonomies。 我的配置文件如下：
-baseURL = &amp;quot;https://tesla-xiao.github.io/&amp;quot; # It seems ok without it. title = &amp;quot;Tesla&#39;s blog&amp;quot; theme = &amp;quot;erblog&amp;quot; paginate = 8 languageCode = &amp;quot;zh-CN&amp;quot; DefaultContentLanguage = &amp;quot;en&amp;quot; enableInlineShortcodes = true footnoteReturnLinkContents = &amp;quot;^&amp;quot; [params] author = &amp;quot;Tesla&amp;quot; bio = &amp;quot;&amp;quot;&amp;quot; &amp;lt;p&amp;gt; Xiao Zhang is a Ph.</description>
+baseURL = &amp;quot;https://xiaozhangryy.github.io/&amp;quot; title = &amp;quot;Xiao&#39;s blog&amp;quot; theme = &amp;quot;erblog&amp;quot; paginate = 8 languageCode = &amp;quot;zh-CN&amp;quot; DefaultContentLanguage = &amp;quot;en&amp;quot; enableInlineShortcodes = true footnoteReturnLinkContents = &amp;quot;^&amp;quot; [params] author = &amp;quot;Xiao&amp;quot; # logo = &amp;quot;//blog.</description>
     </item>
     
   </channel>

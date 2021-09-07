@@ -17,7 +17,7 @@
 ├─archetypes ├─content ├─data ├─layouts ├─static ├─themes └─config.toml 2.2 下载一个主题 在Hugo主题商店挑选一款自己喜欢的主题直接clone下来就行。
 cd themes git clone https://github.com/ertuil/erblog.git themes文件夹用处存放各式主题，可以多下载几个尝试一下不同风格。
 2.3 配置config.toml 这里我参考了两份官方文档，分别关于Configure与Taxonomies。 我的配置文件如下：
-baseURL = &quot;https://tesla-xiao.github.io/&quot; # It seems ok without it. title = &quot;Tesla&#39;s blog&quot; theme = &quot;erblog&quot; paginate = 8 languageCode = &quot;zh-CN&quot; DefaultContentLanguage = &quot;en&quot; enableInlineShortcodes = true footnoteReturnLinkContents = &quot;^&quot; [params] author = &quot;Tesla&quot; bio = &quot;&quot;&quot; &lt;p&gt; Xiao Zhang is a Ph." name="description">
+baseURL = &quot;https://xiaozhangryy.github.io/&quot; title = &quot;Xiao&#39;s blog&quot; theme = &quot;erblog&quot; paginate = 8 languageCode = &quot;zh-CN&quot; DefaultContentLanguage = &quot;en&quot; enableInlineShortcodes = true footnoteReturnLinkContents = &quot;^&quot; [params] author = &quot;Xiao&quot; # logo = &quot;//blog." name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     
@@ -177,8 +177,8 @@ git clone https://github.com/ertuil/erblog.git
 <h2 id="23-配置configtoml">2.3 配置config.toml</h2>
 <p>这里我参考了两份官方文档，分别关于<a href="https://gohugo.io/getting-started/configuration">Configure</a>与<a href="https://gohugo.io/content-management/taxonomies/">Taxonomies</a>。
 我的配置文件如下：</p>
-<pre><code>baseURL = &quot;https://tesla-xiao.github.io/&quot; # It seems ok without it.
-title = &quot;Tesla's blog&quot;
+<pre><code>baseURL = &quot;https://xiaozhangryy.github.io/&quot;
+title = &quot;Xiao's blog&quot;
 theme = &quot;erblog&quot;
 paginate = 8
 languageCode = &quot;zh-CN&quot;
@@ -187,12 +187,17 @@ enableInlineShortcodes = true
 footnoteReturnLinkContents = &quot;^&quot;
 
 [params]
-    author = &quot;Tesla&quot;
+    author = &quot;Xiao&quot;
+    # logo = &quot;//blog.ertuil.top/avater.png&quot;
     bio = &quot;&quot;&quot;
     &lt;p&gt; Xiao Zhang is a Ph.D. candidate in the school of Statistics and 
         Management of SUFE. He majors in Applied Statistics, and his research 
-        interests includes high dimensional statistics. &lt;/p&gt;
+        interests include high dimensional statistics. &lt;/p&gt;
     &quot;&quot;&quot;
+    #&lt;br /&gt;
+    # &lt;p&gt;Also all html tags such as 
+    # &lt;a href=&quot;https://github.com/ertuil/erblog&quot;&gt;link&lt;/a&gt; are a good here.&lt;/p&gt;
+    
     copyright = &quot;Copyright © 2020. All rights reserved.&quot;
     description = &quot;Student in SUFE&quot;
 
@@ -204,6 +209,12 @@ footnoteReturnLinkContents = &quot;^&quot;
     url = &quot;/zone/&quot;
     weight = 2
 
+#[[menu.main]]
+#    identifier = &quot;gallery&quot;
+#    url = &quot;/gallery/&quot;
+#    name = &quot;Gallery&quot;
+#    weight = 3
+
 # ------------------------------------------------------------------------------
 
 [[menu.footer]]
@@ -211,7 +222,6 @@ footnoteReturnLinkContents = &quot;^&quot;
     name = &quot;Xu Liu's blog&quot;
     url = &quot;https://xliusufe.gitee.io/post/hugomac/&quot;
     weight = 1
-    # My mentor's blog.
 
 # ------------------------------------------------------------------------------
 
@@ -223,15 +233,14 @@ series = &quot;series&quot;
 # ------------------------------------------------------------------------------
 
 [[menu.icon]]
-    url = &quot;mailto:zhangxiao_0422@163.com&quot;
+    url = &quot;mailto:zxiao.1994@gmail.com&quot;
     name = &quot;envelope-o&quot;
     weight = 1
 
 [[menu.icon]]
-    url = &quot;https://github.com/Tesla-Xiao&quot;
+    url = &quot;https://github.com/XiaoZhangryy&quot;
     name = &quot;github&quot;
     weight = 2
-
 </code></pre><h2 id="24-创建一篇博客文章">2.4 创建一篇博客文章</h2>
 <p>博客的内容都存放在content文件夹下，我们可进一步划分文件夹post与zone来对应我们在博客上设置的板块。</p>
 <p>首先创建文章文件<code>hugo new post/build_blog.md</code>。
@@ -259,14 +268,14 @@ hugo -t erblog --buildDrafts
 <p>上方教程有贴图详细教程，在此略过。</p>
 <h3 id="312-创建云仓库">3.1.2 创建云仓库</h3>
 <p>分别在Github及Gitee创建相应的仓库。</p>
-<p>注意，Github仓库名需设置为tesla-xiao.github.io，与我的用户名Tesla-Xiao相一致，方便之后使用 <a href="https://tesla-xiao.github.io">https://tesla-xiao.github.io</a> 进行访问。</p>
-<p>Gitee仓库名需设置为tesla-xiao，与我的用户名Tesla-Xiao相一致，方便之后使用 <a href="https://tesla-xiao.gitee.io">https://tesla-xiao.gitee.io</a> 进行访问。</p>
+<p>注意，Github仓库名需设置为xiaozhangryy.github.io，与我的用户名XiaoZhangryy相一致，方便之后使用 <a href="https://xiaozhangryy.github.io">https://xiaozhangryy.github.io</a> 进行访问。</p>
+<p>Gitee仓库名需设置为xiaozhangryy，与我的用户名XiaoZhangryy相一致，方便之后使用 <a href="https://xiaozhangryy.gitee.io">https://xiaozhangryy.gitee.io</a> 进行访问。</p>
 <h3 id="312-关联">3.1.2 关联</h3>
 <p>具体操作如下：</p>
 <pre><code>cd public
 git init
-git remote add github git@github.com:Tesla-Xiao/tesla-xiao.github.io.git
-git remote add gitee git@gitee.com:Tesla-Xiao/tesla-xiao.git
+git remote add github git@github.com:XiaoZhangryy/xiaozhangryy.github.io.git
+git remote add gitee git@gitee.com:XiaoZhangryy/xiaozhangryy.git
 git remote -v # check remote library information
 </code></pre><h2 id="32-发布">3.2 发布</h2>
 <pre><code># cd public
@@ -279,7 +288,7 @@ git push gitee master
 <p>首先到你的Gitee对应仓库，找到如下Gitee Pages图标并点击。</p>
 <p><img src="/post/build_blog/gitee_update_pages.png" alt="Gitee Pages"></p>
 <p>页面跳转后，再点击更新（或开通），等待部署完成。</p>
-<p>接着就可以通过 <a href="https://tesla-xiao.gitee.io">https://tesla-xiao.gitee.io</a> 访问你的主页了（可能实际更新存在一定的延时）。</p>
+<p>接着就可以通过 <a href="https://xiaozhangryy.gitee.io">https://xiaozhangryy.gitee.io</a> 访问你的主页了（可能实际更新存在一定的延时）。</p>
 </div>
             </div>
         </div>
