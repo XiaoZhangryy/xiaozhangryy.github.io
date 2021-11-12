@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sublime on Xiao&#39;s blog</title>
+    <link>https://xiaozhangryy.github.io/tags/sublime/</link>
+    <description>Recent content in Sublime on Xiao&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 12 Nov 2021 15:07:34 +0800</lastBuildDate>
+    
+	<atom:link href="https://xiaozhangryy.github.io/tags/sublime/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Sublime text 3 install and settings on WIN10.</title>
+      <link>https://xiaozhangryy.github.io/post/sublime3/</link>
+      <pubDate>Fri, 12 Nov 2021 15:07:34 +0800</pubDate>
+      
+      <guid>https://xiaozhangryy.github.io/post/sublime3/</guid>
+      <description>1. Install Softwares  Sublime text 3 Texlive SumatraPDF  Add paths to system environment variables, including
+E:\Sublime3\ E:\Sublime3\SumatraPDF\ E:\TexLive\2019\ 2. Sublime Settings 1. Package Control
+ ctrl + shift + p Type Install Package Control, press enter  2. Latextools - latex
+ ctrl + shift + p Type Package Control: Install Package, press enter Type Latextools, press enter Find LaTeXTools.sublime-settings under Latextools folder   &amp;quot;texpath&amp;quot; : &amp;quot;C:\\texlive\\2019\\bin\\win32;$PATH&amp;quot;, &amp;quot;distro&amp;quot; : &amp;quot;texlive&amp;quot;, &amp;quot;sumatra&amp;quot; : &amp;quot;E:\\Sublime3\\SumatraPDF\\SumatraPDF.</description>
+    </item>
+    
+  </channel>
+</rss>

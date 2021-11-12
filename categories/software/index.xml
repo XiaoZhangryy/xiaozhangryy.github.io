@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software on Xiao&#39;s blog</title>
+    <link>https://xiaozhangryy.github.io/categories/software/</link>
+    <description>Recent content in Software on Xiao&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 12 Nov 2021 15:08:09 +0800</lastBuildDate>
+    
+	<atom:link href="https://xiaozhangryy.github.io/categories/software/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>VS code install and settings.</title>
+      <link>https://xiaozhangryy.github.io/post/vscode/</link>
+      <pubDate>Fri, 12 Nov 2021 15:08:09 +0800</pubDate>
+      
+      <guid>https://xiaozhangryy.github.io/post/vscode/</guid>
+      <description>1. Extensions:  LaTeX Workshop Markdown Preview Enhanced  2. setting.json { &amp;quot;workbench.colorTheme&amp;quot;: &amp;quot;Monokai&amp;quot;, &amp;quot;editor.fontSize&amp;quot;: 16, // LaTeX // onFileChange, onSave, never &amp;quot;latex-workshop.latex.autoBuild.run&amp;quot;: &amp;quot;never&amp;quot;, &amp;quot;latex-workshop.message.error.show&amp;quot;: false, &amp;quot;latex-workshop.message.warning.show&amp;quot;: false, &amp;quot;latex-workshop.latex.tools&amp;quot;: [ { &amp;quot;name&amp;quot;: &amp;quot;xelatex&amp;quot;, &amp;quot;command&amp;quot;: &amp;quot;xelatex&amp;quot;, &amp;quot;args&amp;quot;: [ &amp;quot;-synctex=1&amp;quot;, &amp;quot;-interaction=nonstopmode&amp;quot;, &amp;quot;-file-line-error&amp;quot;, &amp;quot;%DOCFILE%&amp;quot; ] }, { &amp;quot;name&amp;quot;: &amp;quot;pdflatex&amp;quot;, &amp;quot;command&amp;quot;: &amp;quot;pdflatex&amp;quot;, &amp;quot;args&amp;quot;: [ &amp;quot;-synctex=1&amp;quot;, &amp;quot;-interaction=nonstopmode&amp;quot;, &amp;quot;-file-line-error&amp;quot;, &amp;quot;%DOCFILE%&amp;quot; ] }, { &amp;quot;name&amp;quot;: &amp;quot;bibtex&amp;quot;, &amp;quot;command&amp;quot;: &amp;quot;bibtex&amp;quot;, &amp;quot;args&amp;quot;: [ &amp;quot;%DOCFILE%&amp;quot; ] } ], &amp;quot;latex-workshop.latex.recipes&amp;quot;: [ { &amp;quot;name&amp;quot;: &amp;quot;pdflatex&amp;quot;, &amp;quot;tools&amp;quot;: [ &amp;quot;pdflatex&amp;quot; ] }, { &amp;quot;name&amp;quot;: &amp;quot;pdf-&amp;gt;bib-&amp;gt;pdf-&amp;gt;pdf&amp;quot;, &amp;quot;tools&amp;quot;: [ &amp;quot;pdflatex&amp;quot;, &amp;quot;bibtex&amp;quot;, &amp;quot;pdflatex&amp;quot;, &amp;quot;pdflatex&amp;quot; ] }, { &amp;quot;name&amp;quot;: &amp;quot;xe-&amp;gt;bib-&amp;gt;xe-&amp;gt;xe&amp;quot;, &amp;quot;tools&amp;quot;: [ &amp;quot;xelatex&amp;quot;, &amp;quot;bibtex&amp;quot;, &amp;quot;xelatex&amp;quot;, &amp;quot;xelatex&amp;quot; ] }, { &amp;quot;name&amp;quot;: &amp;quot;xelatex&amp;quot;, &amp;quot;tools&amp;quot;: [ &amp;quot;xelatex&amp;quot; ], } ], &amp;quot;latex-workshop.</description>
+    </item>
+    
+    <item>
+      <title>Sublime text 3 install and settings on WIN10.</title>
+      <link>https://xiaozhangryy.github.io/post/sublime3/</link>
+      <pubDate>Fri, 12 Nov 2021 15:07:34 +0800</pubDate>
+      
+      <guid>https://xiaozhangryy.github.io/post/sublime3/</guid>
+      <description>1. Install Softwares  Sublime text 3 Texlive SumatraPDF  Add paths to system environment variables, including
+E:\Sublime3\ E:\Sublime3\SumatraPDF\ E:\TexLive\2019\ 2. Sublime Settings 1. Package Control
+ ctrl + shift + p Type Install Package Control, press enter  2. Latextools - latex
+ ctrl + shift + p Type Package Control: Install Package, press enter Type Latextools, press enter Find LaTeXTools.sublime-settings under Latextools folder   &amp;quot;texpath&amp;quot; : &amp;quot;C:\\texlive\\2019\\bin\\win32;$PATH&amp;quot;, &amp;quot;distro&amp;quot; : &amp;quot;texlive&amp;quot;, &amp;quot;sumatra&amp;quot; : &amp;quot;E:\\Sublime3\\SumatraPDF\\SumatraPDF.</description>
+    </item>
+    
+  </channel>
+</rss>

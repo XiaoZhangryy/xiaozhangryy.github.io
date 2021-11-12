@@ -1,0 +1,309 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Xiao&#39;s blog - VS code install and settings. </title>
+
+    
+    
+    <meta content="VSCode, Software" name="keywords">
+    
+    <meta content="Xiao&#39;s blog - 1. Extensions:  LaTeX Workshop Markdown Preview Enhanced  2. setting.json { &quot;workbench.colorTheme&quot;: &quot;Monokai&quot;, &quot;editor.fontSize&quot;: 16, // LaTeX // onFileChange, onSave, never &quot;latex-workshop.latex.autoBuild.run&quot;: &quot;never&quot;, &quot;latex-workshop.message.error.show&quot;: false, &quot;latex-workshop.message.warning.show&quot;: false, &quot;latex-workshop.latex.tools&quot;: [ { &quot;name&quot;: &quot;xelatex&quot;, &quot;command&quot;: &quot;xelatex&quot;, &quot;args&quot;: [ &quot;-synctex=1&quot;, &quot;-interaction=nonstopmode&quot;, &quot;-file-line-error&quot;, &quot;%DOCFILE%&quot; ] }, { &quot;name&quot;: &quot;pdflatex&quot;, &quot;command&quot;: &quot;pdflatex&quot;, &quot;args&quot;: [ &quot;-synctex=1&quot;, &quot;-interaction=nonstopmode&quot;, &quot;-file-line-error&quot;, &quot;%DOCFILE%&quot; ] }, { &quot;name&quot;: &quot;bibtex&quot;, &quot;command&quot;: &quot;bibtex&quot;, &quot;args&quot;: [ &quot;%DOCFILE%&quot; ] } ], &quot;latex-workshop.latex.recipes&quot;: [ { &quot;name&quot;: &quot;pdflatex&quot;, &quot;tools&quot;: [ &quot;pdflatex&quot; ] }, { &quot;name&quot;: &quot;pdf-&gt;bib-&gt;pdf-&gt;pdf&quot;, &quot;tools&quot;: [ &quot;pdflatex&quot;, &quot;bibtex&quot;, &quot;pdflatex&quot;, &quot;pdflatex&quot; ] }, { &quot;name&quot;: &quot;xe-&gt;bib-&gt;xe-&gt;xe&quot;, &quot;tools&quot;: [ &quot;xelatex&quot;, &quot;bibtex&quot;, &quot;xelatex&quot;, &quot;xelatex&quot; ] }, { &quot;name&quot;: &quot;xelatex&quot;, &quot;tools&quot;: [ &quot;xelatex&quot; ], } ], &quot;latex-workshop." name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+
+    
+
+    
+
+    
+    
+    <script type="text/javascript" async
+        src="/mathjax-3.0.0/tex-mml-chtml.js">
+    </script>
+    
+
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel="stylesheet" href="/self/css/default.css">
+    <script src="/layui/layui.js"></script>
+
+
+    <link rel="stylesheet" async href="/self/css/markdown.min.css">
+    <link rel="stylesheet" async href="/self/css/gallery.css">
+    <link rel="stylesheet" async href="/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="/self/js/lazysizes.min.js" async></script>
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+</head>
+
+<body>
+    
+    <header class="layui-header layui-bg-cyan">
+
+    
+    
+    <a class="nav-self-logo" href="/">
+        Xiao&#39;s blog
+    </a>
+
+    <ul class="layui-nav layui-layout-right layui-bg-cyan" lay-filter="">
+        
+        
+        <li class="layui-nav-item" id="nav_big"><a href="/post/">Posts</a></li>
+        
+
+        
+            
+                <li class="layui-nav-item" id="nav_big"><a href="/zone/">Zone</a></li>
+            
+        
+
+        
+        <li class="layui-nav-item" id="nav_small">
+            <a href="javascript:;">
+                <i class="layui-icon layui-icon-app" style="font-size: 24px;"></i>
+            </a>
+
+            <dl class="layui-nav-child">
+                
+                <dd><a href="/post/">Posts</a></dd>
+                
+
+                
+                    
+                        <dd><a href="/zone/">Zone</a></dd>
+                    
+                
+            </dl>
+        </li>
+    </ul>
+</header>
+
+<script>
+layui.use('element', function(){
+  var element = layui.element;
+});
+</script>
+        <div id="content" style="min-height:80%">
+<div class="layui-container" style="margin-bottom: 10px">
+    
+
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-md12 layui-col-sm12 layui-col-xs12">
+            <div class="layui-card single-card">
+                <br />
+                <blockquote class="layui-elem-quote markdown-body single-title" >
+                    <h1>VS code install and settings.</h1>
+                    <h3 style="margin-top:10px; margin-bottom:10px"> 
+    <i class="layui-icon layui-icon-date" style="font-size: 24px; vertical-align: -2px;"></i>
+    <span>2021-11-12</span>
+
+    
+    <i class="layui-icon layui-icon-tabs" style="font-size: 22px; vertical-align: 0px;"></i>
+    
+        <a href="/tags/vscode">
+            <span class="layui-badge" style="vertical-align: 2px;">VSCode</span>
+        </a>
+    
+</h3>
+                </blockquote>
+                <div class="layui-card-body markdown-body single-content">
+                    <h1 id="1-extensions">1. Extensions:</h1>
+<ul>
+<li>LaTeX Workshop</li>
+<li>Markdown Preview Enhanced</li>
+</ul>
+<h1 id="2-settingjson">2. setting.json</h1>
+<pre><code>{
+    &quot;workbench.colorTheme&quot;: &quot;Monokai&quot;,
+    &quot;editor.fontSize&quot;: 16,
+    // LaTeX
+    // onFileChange, onSave, never
+    &quot;latex-workshop.latex.autoBuild.run&quot;: &quot;never&quot;,
+    &quot;latex-workshop.message.error.show&quot;: false,
+    &quot;latex-workshop.message.warning.show&quot;: false,
+
+    &quot;latex-workshop.latex.tools&quot;: [
+        {
+            &quot;name&quot;: &quot;xelatex&quot;,
+            &quot;command&quot;: &quot;xelatex&quot;,
+            &quot;args&quot;: [
+                &quot;-synctex=1&quot;,
+                &quot;-interaction=nonstopmode&quot;,
+                &quot;-file-line-error&quot;,
+                &quot;%DOCFILE%&quot;
+            ]
+        },
+        {
+            &quot;name&quot;: &quot;pdflatex&quot;,
+            &quot;command&quot;: &quot;pdflatex&quot;,
+            &quot;args&quot;: [
+                &quot;-synctex=1&quot;,
+                &quot;-interaction=nonstopmode&quot;,
+                &quot;-file-line-error&quot;,
+                &quot;%DOCFILE%&quot;
+            ]
+        },
+        {
+            &quot;name&quot;: &quot;bibtex&quot;,
+            &quot;command&quot;: &quot;bibtex&quot;,
+            &quot;args&quot;: [
+                &quot;%DOCFILE%&quot;
+            ]
+        }
+    ],
+
+    &quot;latex-workshop.latex.recipes&quot;: [
+        {
+            &quot;name&quot;: &quot;pdflatex&quot;,
+            &quot;tools&quot;: [
+                &quot;pdflatex&quot;
+            ]
+        },
+        {
+            &quot;name&quot;: &quot;pdf-&gt;bib-&gt;pdf-&gt;pdf&quot;,
+            &quot;tools&quot;: [
+                &quot;pdflatex&quot;,
+                &quot;bibtex&quot;,
+                &quot;pdflatex&quot;,
+                &quot;pdflatex&quot;
+            ]
+        },
+        {
+            &quot;name&quot;: &quot;xe-&gt;bib-&gt;xe-&gt;xe&quot;,
+            &quot;tools&quot;: [
+                &quot;xelatex&quot;,
+                &quot;bibtex&quot;,
+                &quot;xelatex&quot;,
+                &quot;xelatex&quot;
+            ]
+        },
+        {
+            &quot;name&quot;: &quot;xelatex&quot;,
+            &quot;tools&quot;: [
+                &quot;xelatex&quot;
+            ],
+        }
+    ],
+    &quot;latex-workshop.latex.clean.fileTypes&quot;: [  //设定清理文件的类型  
+        &quot;*.aux&quot;,  
+        &quot;*.bbl&quot;,  
+        &quot;*.blg&quot;,  
+        &quot;*.idx&quot;,  
+        &quot;*.ind&quot;,  
+        &quot;*.lof&quot;,  
+        &quot;*.lot&quot;,  
+        &quot;*.out&quot;,  
+        &quot;*.toc&quot;,  
+        &quot;*.acn&quot;,  
+        &quot;*.acr&quot;,  
+        &quot;*.alg&quot;,  
+        &quot;*.glg&quot;,  
+        &quot;*.glo&quot;,  
+        &quot;*.gls&quot;,  
+        &quot;*.ist&quot;,  
+        &quot;*.fls&quot;,  
+        &quot;*.log&quot;,  
+        &quot;*.fdb_latexmk&quot;,  
+        &quot;*.nav&quot;,  
+        &quot;*.snm&quot;,  
+        //&quot;*.synctex.gz&quot;  
+      ], 
+
+    //&quot;latex-workshop.view.pdf.viewer&quot;:&quot;tab&quot;,
+    &quot;latex-workshop.view.pdf.viewer&quot;: &quot;external&quot;,
+    &quot;latex-workshop.view.pdf.internal.synctex.keybinding&quot;: &quot;double-click&quot;,
+    &quot;latex-workshop.view.pdf.external.viewer.command&quot;: &quot;E:/VSCode/SumatraPDF/SumatraPDF.exe&quot;,
+    &quot;latex-workshop.view.pdf.external.viewer.args&quot;: [
+        &quot;%PDF%&quot;
+    ],
+    &quot;latex-workshop.view.pdf.external.synctex.command&quot;: &quot;E:/VSCode/SumatraPDF/SumatraPDF.exe&quot;,
+    &quot;latex-workshop.view.pdf.external.synctex.args&quot;: [
+        &quot;-forward-search&quot;,
+        &quot;%TEX%&quot;,
+        &quot;%LINE%&quot;,
+        &quot;-reuse-instance&quot;,
+        &quot;-inverse-search&quot;,
+        &quot;\&quot;E:/VSCode/MicrosoftVSCode/Code.exe\&quot; \&quot;E:/VSCode/MicrosoftVSCode/resources/app/out/cli.js\&quot; -r -g \&quot;%f:%l\&quot;&quot;,
+        &quot;%PDF%&quot;,
+    ],
+    &quot;editor.wordWrap&quot;: &quot;on&quot;,
+    &quot;editor.rulers&quot;: [
+        80
+    ],
+    &quot;C_Cpp.updateChannel&quot;: &quot;Insiders&quot;,
+    //&quot;r.rterm.windows&quot;: &quot;E:/R/R3.6.3/R-3.6.3/bin/x64/R.exe&quot;,
+    //&quot;r.lsp.lang&quot;: &quot;E:/R/R3.6.3/R-3.6.3/bin/x64/R.exe&quot;,
+    //&quot;editor.fontLigatures&quot;: null,
+    //&quot;r.alwaysUseActiveTerminal&quot;: true,
+    //&quot;r.bracketedPaste&quot;: true,
+}
+</code></pre></div>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+        </div><footer>
+    
+
+    <div class="layui-container">
+        <div class="layui-row">
+            <div class="layui-col-md4 layui-col-sm6 layui-col-xs6">
+                <h3> Related Sites </h3>
+            </div>
+        </div>
+        <div class="layui-row">
+            
+            <div class="layui-col-md4 layui-col-sm6 layui-col-xs12">
+                <a href="https://xliusufe.gitee.io/post/hugomac/"><p class="footer-url">Xu Liu&#39;s blog</p></a>
+            </div>
+            
+        </div>
+    </div>
+    
+    
+    <div class="layui-container">
+        <p class="copyright">Copyright © 2020. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>
